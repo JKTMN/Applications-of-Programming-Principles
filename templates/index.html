@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do-List</title>
+  <link rel="stylesheet" href="static/styles.css">
+  <script src="static/script.js"></script>
+</head>
+<body>
+    <h1 id="To-Do-List_Heading">To-Do-List</h1>
+
+    <!-- button that opens up a form to submit a new task -->
+  <button id="open-form-button" type="button" onclick="openForm()">Submit Task</button>
+
+
+
+
+
+
+  <div id="submit-task-container">
+    <!-- A multistep modal form containing elements to give the task details -->
+    <form id="step-1"> <!-- The first page of the form -->
+      <fieldset>
+      <h2 class="form-title">Submit a new task!</h2>
+        <!-- below is inputs for the task name and description -->
+      <input type="text" id="task-name" name="task-name" class="input" placeholder="Task Name:"maxlength="30">
+      <input type="text" id="task-description" name="task-description" class="input" placeholder="Task Description:" maxlength="250">
+        <!-- below is the close button to close the form and the next button that goes to the next page of the form -->
+      <button id="close-button" class="button-container" class="child" type="button" onclick="closeForm()" >Close</button>
+      <button id="next-button" class="button-container" class="child" type="button" onclick="nextStep(1)">Next</button>
+        <!-- below is a list that functions as a progress bar using css -->
+      <ul id="progressbar">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+    </fieldset>
+    </form>
+    
+    <form id="step-2" style="display: none;"> <!-- The second page of the form -->
+      <fieldset>
+      <h2 class="form-title">Set a due date!</h2>
+        <!-- below is the date input to set a due date -->
+      <input type="date" id="due-date" name="date">
+      <!-- below is the back button and the next button that goes to the respective page of the form -->
+      <button id="previous-button" class="button-container" class="child" type="button" onclick="prevStep(2)">Previous</button>
+      <button id="next-button" class="button-container" class="child" type="button" onclick="nextStep(2)">Next</button>
+        <!-- below is a list that functions as a progress bar using css -->
+      <ul id="progressbar">
+        <li class="active"></li>
+        <li class="active"></li>
+        <li></li>
+      </ul>
+
+    </fieldset>
+    </form>
+    
+    <form id="step-3" style="display: none;"> <!-- The third page of the form -->
+      <fieldset> 
+      <h2 class="form-title">Set a priority level!</h2> <br>
+      <!-- below is the priority buttons that set the priority of the task -->
+      <button id="low-priority" class="" type="button" onclick="selctedPriority(event)">Low</button> 
+      <button id="medium-priority" class="" type="button" onclick="selctedPriority(event)">Medium</button> 
+      <button id="high-priority" class="" type="button" onclick="selctedPriority(event)">High</button>
+        <!-- below is the back button and the next button that goes to the respective page of the form -->
+      <button id="previous-button" class="button-container" class="child" type="button" onclick="prevStep(3)">Previous</button>
+      <button id="submit-button" class="button-container" class="child" type="button" onclick="submitForm()">Submit</button>
+        <!-- below is a list that functions as a progress bar using css -->
+      <ul id="progressbar">
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+      </ul>
+
+    </fieldset>
+    </form>
+  </div>
+
+
+  <!-- a modal which displays the full task details,
+  which gives options to delete, edit or mark the task as complete
+  displays after pressing the task button -->
+  <div id="full-task-display-container">
+    <form id="full-task-display-form">
+  </form>
+  </div>
+
+
+  <!-- an area which displays the list of tasks, 
+    a message that displays when there are no tasks
+  and buttons to filter the tasks -->
+  <div id="current-tasks-container">
+
+    <h2>Current to-dos</h2>
+    <h3 id="tasks-remaining"></h3>  <!-- buttons that filter and sort the current tasks-->
+    <button onclick="sortListBy('sort-due-date')">Sort by Due Date</button>
+    <button onclick="sortListBy('sort-priority-level')">Sort by Priority Level</button>
+
+    <p id="no-tasks-message">Well Done! You have completed all of your tasks! <br>
+      click the "Add Task" button to add a new task <br>
+      or enjoy your day! <!-- a message that displays if there are no current tasks-->
+    </p>
+
+    <ul id="current-tasks-list">
+    </ul>
+
+    </div>
+  </div>
+</body>
+</html>

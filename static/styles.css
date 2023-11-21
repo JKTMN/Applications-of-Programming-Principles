@@ -1,0 +1,437 @@
+
+
+
+/* --------Page Heading---------- */
+
+#To-Do-List_Heading {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 80px;
+    color: blueviolet;
+}
+
+/* --------Page Heading---------- */
+
+
+/* --------Buttons---------- */
+
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    width: 100px;
+    background: #d26cdb;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+button:hover{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #7c5a80;
+    background: #7c5a80;
+}
+
+#open-form-button {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    margin: 10px auto 0;
+}
+
+#low-priority{
+    background: #07571f;
+}
+
+#low-priority:hover, #low-priority:focus, #low-priority.active{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #033d15;
+    background: #02250d;
+}
+
+#medium-priority{
+    background: #b1770c;
+}
+
+#medium-priority:hover, #medium-priority:focus, #medium-priority.active{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #b1770c;
+    background: #644407;
+}
+
+#high-priority{
+    background: #ad390b;
+}
+
+#high-priority:hover, #high-priority:focus, #high-priority.active{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #962e05;
+    background: #571b04;
+}
+
+#next-button{
+    position: absolute;
+    bottom: 50px;
+    right: 83px;
+}
+
+#previous-button{
+    position: absolute;
+    bottom: 50px;
+    left: 83px;
+}
+
+#submit-button {
+    position: absolute;
+    bottom: 50px;
+    right: 83px;
+}
+
+#close-button {
+    position: absolute;
+    bottom: 50px;
+    left: 83px;
+}
+
+.complete-button, .delete-button {
+    display: inline-block;
+    margin: 0 10px;
+    bottom: 90px; 
+    height: 40px;
+}
+
+#close-task-disp {
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+
+/* --------Buttons---------- */
+
+
+/* --------Form---------- */
+
+#submit-task-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+form {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+form fieldset {
+    width: 80%;
+    height: 325px;
+    background: white;
+    border: 0 none;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    margin: 0 10%;
+    position: relative;
+    
+}
+
+form fieldset:not(:first-of-type) {
+    display: none;
+}
+
+
+form input, form textarea {
+    width: 100%;
+    color: #2C3E50;
+    font-size: 13px;
+    padding: 15px;
+    border: 1px solid #CCC;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    transition: 300ms ease-in-out;
+}
+
+.input:focus {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+               -13px -13px 100px #ffffff;
+  }
+
+#form-title {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    top: 90px;
+}
+
+#due-date {
+    margin-top: 30px;
+}
+
+.priorButtons {
+    margin-top: 17px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* --------Form---------- */
+
+
+/* --------Progress Bar---------- */
+
+#progressbar {
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+    width: 100%;
+    transform: translateX(-50%);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    counter-reset: step;
+}
+    
+#progressbar li {
+  list-style-type: none;
+  color: black;
+  text-transform: uppercase;
+  font-size: 9px;
+  width: 33.33%;
+  float: left;
+  position: relative;
+}
+
+#progressbar li:before {
+    content: counter(step);
+  counter-increment: step;
+  width: 20px;
+  line-height: 20px;
+  display: block;
+  font-size: 10px;
+  color: white;
+  background: #6f7370;
+  border-radius: 3px;
+  margin: 0 auto 5px auto;
+}
+   
+#progressbar li:after {
+    content: '';
+  width: 100%;
+  height: 2px;
+  background: #6f7370;
+  position: absolute;
+  left: -50%;
+  top: 9px;
+  z-index: -1;
+}
+
+#progressbar li:first-child:after {
+    content: none;
+}
+
+#progressbar li.active:before, #progressbar li.active:after{
+    background: #d26cdb;
+    color: white;
+    border-radius: 6px;
+}
+
+/* --------Progress Bar---------- */
+
+
+/* --------Current Task Box---------- */
+#current-tasks-container {
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    position: absolute;
+    width: 750px;
+    height: auto;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+
+    background: white;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    overflow-y: auto;
+    border-radius: 20PX;
+  }
+
+  #current-tasks-list h2 {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+    padding: 10px 0;
+}
+
+#current-tasks-list ul {
+    display: inline-block;
+    text-align: left;
+    padding: 0;
+    margin: 0 auto;
+}
+
+#current-tasks-list li {
+    display: inline-block;
+    margin: 0 auto;
+    width: 75%;
+    text-align: center;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.task-button {
+    width: 600px;
+    height: 30px;
+    border: 0;
+    border-radius: 1px;
+    margin: 10px;
+    text-align: center;
+
+    background: #d26cdb;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.task-button:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #7c5a80;
+    background: #7c5a80;
+}
+
+
+
+li .task-button span.due-date {
+    margin-right: 44px;
+    margin-left: 60px;
+} 
+
+li .task-button span.priority {
+    margin-right: 20px;
+}
+
+#no-tasks-message {
+    display: none;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.task-display {
+    display: block;
+    width: 80%;
+    height: 325px;
+    background: white;
+    border: 0 none;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    margin: 0 10%;
+    position: relative;
+      
+}
+
+#full-task-display-container {
+    display: none;
+    
+}
+
+#full-task-display {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+#full-task-display-fieldset {
+    width: 80%;
+    height: 325px;
+    background: rgb(255, 255, 255);
+    border: 0 none;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    margin: 0 10%;
+    position: relative;
+}
+
+#form-title {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    top: 90px;
+}
+
+/* --------Current Task Box---------- */
+
+
+/* --------Full task Display--------- */
+
+#full-task-display-container {
+    display: none;
+    
+}
+
+#full-task-display-form {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+#task-display-fieldset {
+    width: 80%;
+    height: 325px;
+    background: rgb(160, 43, 43);
+    border: 0 none;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    margin: 0 10%;
+    position: relative;
+    
+}
+
+#low-prior-disp {
+    color: #0b8a31;
+}
+
+#medium-prior-disp {
+    color: #b1770c;
+}
+
+#high-prior-disp {
+    color: #ad390b;
+}
+
+/* -------Full Task Display---------- */
